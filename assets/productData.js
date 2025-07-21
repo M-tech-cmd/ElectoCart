@@ -27,7 +27,7 @@ export const products = [
   },
   {
     id: 4,
-    name: "Garmin Venu 2",
+    name: "",
     description: "Noise Cancellation, 24-hour battery",
     rating: 4.5,
     price: "Ksh7349.99",

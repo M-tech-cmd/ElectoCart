@@ -1,6 +1,9 @@
 export const metadata = {
   title: 'ElectroCart',
   description: 'Your one-stop electronics shop',
+  icons: {
+    icon: '/logo.png', // Path to your logo
+  },
 };
 
 import { Outfit } from 'next/font/google';
