@@ -4,7 +4,7 @@ let catched = global.mongoose;
 if (!catched) {
   catched = global.mongoose = { conn: null, promise: null };
 }
-async function dbConnect() {
+async function connectDB() {
   if (catched.conn) {
     return catched.conn;
   }
@@ -20,4 +20,4 @@ async function dbConnect() {
   return catched.conn;
 }
 
-export default dbConnect;
+export default connectDB;
