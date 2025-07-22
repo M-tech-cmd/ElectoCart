@@ -12,10 +12,10 @@ async function connectDB() {
     const opts = {
       bufferCommands: false,
     };
-    // Use process.env.MONGODB_URI directly as it now contains the database name
-    catched.promise = mongoose.connect(process.env.MONGODB_URI, opts).then(mongoose => {
+    catched.promise = mongoose.connect(`${process.env.MONGODB_URI}/electrocart`, opts).then(mongoose =>  {
       return mongoose;
     })
+      
   }
   catched.conn = await catched.promise;
   return catched.conn;
