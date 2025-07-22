@@ -12,9 +12,10 @@ async function connectDB() {
     const opts = {
       bufferCommands: false,
     };
-    catched.promise = mongoose.connect(`${process.env.MONGODB_URI}/electrocart`, opts).then((mongoose) => {
+    catched.promise = mongoose.connect(`${process.env.MONGODB_URI}/electrocart`, opts).then(mongoose =>  {
       return mongoose;
-    });
+    })
+      
   }
   catched.conn = await catched.promise;
   return catched.conn;
