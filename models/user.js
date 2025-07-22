@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
   },
 }, { minimize: false }); // Setting minimize to false to allow empty objects
 
-const User = mongoose.models.user || mongoose.model("user", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;
-export { userSchema };
