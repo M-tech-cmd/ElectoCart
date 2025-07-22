@@ -1,12 +1,12 @@
 import { serve } from "inngest/next";
-import { syncUserCreation, syncUserDeletion, syncUserUpdateicon } from "@/config/innjest";
+import { syncUserCreation, syncUserDeletion, syncUserUpdation } from "@/config/innjest";
 
 // Create Api that serves zero functions
 export const { GET, POST, PUT } = serve({
   client: inngest,
   functions: [
     syncUserCreation,
-    syncUserUpdateicon,
+    syncUserUpdation,
     syncUserDeletion
   ],
 });
