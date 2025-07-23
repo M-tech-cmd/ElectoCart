@@ -1,7 +1,13 @@
+// jsconfig.json
 {
   "compilerOptions": {
+    "baseUrl": ".", // Ensures absolute paths are relative to the project root
     "paths": {
-      "@/*": ["./*"]
+      "@/models/*": ["models/*"], // Explicitly map @/models to the models directory
+      "@/config/*": ["config/*"], // Keep this if you use it for other imports
+      "@/*": ["./*"] // Keep this for general root-level imports
     }
-  }
+  },
+  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"], // Ensure all relevant files are included
+  "exclude": ["node_modules"] // Exclude node_modules for faster compilation
 }

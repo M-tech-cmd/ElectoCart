@@ -1,7 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "./db";
-// REVERTED: Using relative path that should be correct based on your project structure
-import User from '../models/User'; // <--- CHANGE THIS LINE BACK TO THIS
+// NEW CORRECTED LINE: Use the specific models alias
+import User from '@/models/User'; // <--- CHANGE THIS LINE TO USE THE ALIAS
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "electrocart-next" });
