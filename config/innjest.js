@@ -1,6 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "./db";
-import User from "../models/User"; // Ensure the import matches the actual file name casing
+// CORRECTED LINE: Changed to use the absolute path alias defined in jsconfig.json
+import User from '@/models/User'; // <--- CHANGE THIS LINE
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "electrocart-next" });
@@ -13,7 +14,7 @@ export const syncUserCreation = inngest.createFunction(
         const { id, first_name, last_name, email_addresses, image_url } = event.data;
         const userData = {
             _id: id,
-            email: email_addresses[0].email_address, // fixed typo in 'email'
+            email: email_addresses[0].email_address,
             name: first_name + ' ' + last_name,
             image_url: image_url
         };
@@ -30,12 +31,12 @@ export const syncUserUpdation = inngest.createFunction(
         const { id, first_name, last_name, email_addresses, image_url } = event.data;
         const userData = {
             _id: id,
-            email: email_addresses[0].email_address, // fixed typo in 'email'
+            email: email_addresses[0].email_address,
             name: first_name + ' ' + last_name,
             image_url: image_url
         };
         await connectDB();
-        await User.findOneAndUpdate({ _id: id }, userData); // fixed update query
+        await User.findOneAndUpdate({ _id: id }, userData);
     }
 );
 
