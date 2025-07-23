@@ -12,11 +12,8 @@ async function connectDB() {
     const opts = {
       bufferCommands: false,
     };
-
-    // *** ADD THIS TEMPORARY DEBUGGING LINE ***
-    console.log("MONGODB_URI received in function:", process.env.MONGODB_URI);
-    // *****************************************
-
+    // CORRECTED LINE: Use process.env.MONGODB_URI directly
+    // DO NOT append '/electrocart' here, as it's already in the environment variable
     catched.promise = mongoose.connect(process.env.MONGODB_URI, opts).then(mongoose => {
       return mongoose;
     })
