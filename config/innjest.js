@@ -1,7 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "./db";
-// CORRECTED LINE: Changed to use the absolute path alias defined in jsconfig.json
-import User from '@/models/User'; // <--- CHANGE THIS LINE
+// REVERTED: Using relative path that should be correct based on your project structure
+import User from '../models/User'; // <--- CHANGE THIS LINE BACK TO THIS
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "electrocart-next" });
