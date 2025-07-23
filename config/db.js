@@ -4,6 +4,7 @@ let catched = global.mongoose;
 if (!catched) {
   catched = global.mongoose = { conn: null, promise: null };
 }
+
 async function connectDB() {
   if (catched.conn) {
     return catched.conn;
@@ -12,16 +13,9 @@ async function connectDB() {
     const opts = {
       bufferCommands: false,
     };
-
-    // *** TEMPORARY DEBUGGING LINE ADDED HERE ***
-    console.log("MONGODB_URI received in function:", process.env.MONGODB_URI);
-    // *******************************************
-
-    // CORRECTED LINE: Use process.env.MONGODB_URI directly
-    // DO NOT append '/electrocart' here, as it's already in the environment variable
-    catched.promise = mongoose.connect(process.env.MONGODB_URI, opts).then(mongoose => {
+    catched.promise = mongoose.connect(`${process.env.MONGODB_URI}/${process.env.MONGODB_DB_NAME}`, opts).then(mongoose => {
       return mongoose;
-    })
+    });
   }
   catched.conn = await catched.promise;
   return catched.conn;
