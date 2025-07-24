@@ -1,3 +1,11 @@
+import { Inngest } from "inngest";
+import connectDB from "./db";
+// NEW CORRECTED LINE: Use the specific models alias
+import User from '@/models/User'; // <--- CHANGE THIS LINE TO USE THE ALIAS
+
+// Create a client to send and receive events
+export const inngest = new Inngest({ id: "electrocart-next" });
+
 // Inngest Function to save user data to a database
 export const syncUserCreation = inngest.createFunction(
     { id: "sync-user-from-clerk" },
@@ -8,8 +16,7 @@ export const syncUserCreation = inngest.createFunction(
             _id: id,
             email: email_addresses[0].email_address,
             name: first_name + ' ' + last_name,
-            // CHANGE THIS LINE: Use 'imageUrl' to match your schema
-            imageUrl: image_url // Corrected assignment
+            image_url: image_url
         };
         await connectDB();
         await User.create(userData);
@@ -26,10 +33,20 @@ export const syncUserUpdation = inngest.createFunction(
             _id: id,
             email: email_addresses[0].email_address,
             name: first_name + ' ' + last_name,
-            // CHANGE THIS LINE: Use 'imageUrl' to match your schema
-            imageUrl: image_url // Corrected assignment
+            image_url: image_url
         };
         await connectDB();
         await User.findOneAndUpdate({ _id: id }, userData);
+    }
+);
+
+// Inngest Function to delete user data from database
+export const syncUserDeletion = inngest.createFunction(
+    { id: "delete-user-with-clerk" },
+    { event: "clerk/user.deleted" },
+    async ({ event }) => {
+        const { id } = event.data;
+        await connectDB();
+        await User.findByIdAndDelete(id);
     }
 );
