@@ -5,22 +5,49 @@ import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 import Footer from "@/components/seller/Footer";
 import Loading from "@/components/Loading";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ProductList = () => {
 
-  const { router } = useAppContext()
+  const { router, getToken, user } = useAppContext()
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
   const fetchSellerProduct = async () => {
-    setProducts(productsDummyData)
-    setLoading(false)
+    try {
+      const token = await getToken();
+
+      // --- FIX APPLIED HERE ---
+      // Removed 'formData' from the axios.get call.
+      // GET requests do not use a request body for data;
+      // data should be sent as query parameters via the 'params' config option if needed.
+      const { data } = await axios.get('/api/product/seller-list/', {
+        headers: {Authorization: `Bearer ${token}`}
+      });
+      // --- END FIX ---
+      
+      if(data.success) {
+        setProducts(data.products);
+        setLoading(false);
+      } else {
+        toast.error(data.message);
+        setLoading(false); // Ensure loading is set to false even if backend sends success: false
+      }
+    } catch (error) {
+      console.error("Error fetching seller products:", error); // Added console.error for debugging
+      // Improved error message display from Axios response
+      toast.error(error.response?.data?.message || error.message || "Failed to fetch products.");
+      setLoading(false); // Ensure loading is set to false on error
+    }
   }
 
   useEffect(() => {
-    fetchSellerProduct();
-  }, [])
+    if (user) {
+      fetchSellerProduct();
+    }
+  }, [user]) // user as dependency ensures fetch runs when user data is available
 
   return (
     <div className="flex-1 min-h-screen flex flex-col justify-between">

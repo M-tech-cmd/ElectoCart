@@ -280,7 +280,7 @@ export const userDummyData = {
   "_id": "user_2zpFMucQ9yjdUToPJee1VmKx9eP",
   "name": "emmanuel",
   "email": "admin@example.com",
-  "image_url" :"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzJ6cEZTazl1c2JLRHV6VFlOMUJqZWQ2VDV5ViJ9",
+  "image_url": "https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzJ6cEZTazl1c2JLRHV6VFlOMUJqZWQ2VDV5ViJ9",
   "cartItems": {
     // "67a1f4e43f34a77b6dde9144": 3
   },
@@ -357,10 +357,10 @@ export const orderDummyData = [
     "address": {
       "_id": "67a1e4233f34a77b6dde9055",
       "userId": "user_2zpFMucQ9yjdUToPJee1VmKx9eP",
-      "fullName": "Maanuel Kim",
-      "phoneNumber": "254 23456789",
+      "fullName": "Manuel Kim",
+      "phoneNumber": "0123456789",
       "pincode": 654321,
-      "area": "Main Road , 123 Street, G Block",
+      "area": "Main Road, 123 Street, G Block",
       "city": "City",
       "state": "State",
       "__v": 0
@@ -400,7 +400,7 @@ export const orderDummyData = [
       "_id": "67a1e4233f34a77b6dde9055",
       "userId": "user_2zpFMucQ9yjdUToPJee1VmKx9eP",
       "fullName": "Manuel Kim",
-      "phoneNumber": "254 23456789",
+      "phoneNumber": "0123456789",
       "pincode": 654321,
       "area": "Main Road , 123 Street, G Block",
       "city": "City",
@@ -418,7 +418,7 @@ export const addressDummyData = [
     "_id": "67a1e4233f34a77b6dde9055",
     "userId": "user_2zpFMucQ9yjdUToPJee1VmKx9eP",
     "fullName": "Manuel Kim",
-    "phoneNumber": "254 23456789",
+    "phoneNumber": "0123456789",
     "pincode": 654321,
     "area": "Main Road , 123 Street, G Block",
     "city": "City",
