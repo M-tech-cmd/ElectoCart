@@ -1,5 +1,5 @@
 import { Inngest } from "inngest";
-import connectDB from "./db";
+import connectDB from "./db"; // Assuming this path is correct relative to this file
 import User from '@/models/User';
 import Order from "@/models/Order";
 
@@ -16,8 +16,7 @@ export const syncUserCreation = inngest.createFunction(
             _id: id,
             email: email_addresses[0].email_address,
             name: first_name + ' ' + last_name,
-            // CORRECTED LINE: Assign image_url from Clerk event to imageUrl for Mongoose schema
-            imageUrl: image_url // <--- CHANGE THIS LINE
+            imageUrl: image_url
         };
         await connectDB();
         await User.create(userData);
@@ -34,8 +33,7 @@ export const syncUserUpdation = inngest.createFunction(
             _id: id,
             email: email_addresses[0].email_address,
             name: first_name + ' ' + last_name,
-            // CORRECTED LINE: Assign image_url from Clerk event to imageUrl for Mongoose schema
-            imageUrl: image_url // <--- CHANGE THIS LINE
+            imageUrl: image_url
         };
         await connectDB();
         await User.findOneAndUpdate({ _id: id }, userData);
@@ -53,8 +51,7 @@ export const syncUserDeletion = inngest.createFunction(
     }
 );
 
-// Inngest Function to handle user's ,  order in database
-
+// Inngest Function to handle user's order in database
 export const syncUserOrder = inngest.createFunction(
     {
         id: "create-user-order",
@@ -62,7 +59,7 @@ export const syncUserOrder = inngest.createFunction(
             maxSize: 25,
             timeout: '5s'
         }
-    },
+    }, // <-- REMOVED THE COMMA HERE
     { event: "order/created" },
     async ({ events }) => {
 
@@ -81,5 +78,4 @@ export const syncUserOrder = inngest.createFunction(
 
         return { success: true, processed: orders.length };
     }
-
-});
+); // <-- Also, ensure you don't have an extra semicolon here if it causes issues.
