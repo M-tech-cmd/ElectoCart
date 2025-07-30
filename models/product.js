@@ -1,4 +1,4 @@
-// models/product.js (Renamed file to lowercase 'p')
+
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
