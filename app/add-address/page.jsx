@@ -25,45 +25,24 @@ const AddAddress = () => {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-
         try {
-            // Optional: Basic client-side validation for empty fields (good UX)
-            for (const key in address) {
-                if (address[key].trim() === '') {
-                    toast.error(`Please fill in your ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}.`);
-                    return; // Stop submission if any field is empty
-                }
-            }
+            const token = await getToken()
 
-            const token = await getToken();
 
-            // --- FIX APPLIED HERE: Correctly pass address data as the second argument ---
-            const { data } = await axios.post('/api/user/add-address', {
-                address: { // <--- THIS IS THE PRIMARY FIX: Correctly sending the 'address' object
-                    ...address,
-                    pincode: Number(address.pincode) // Ensure pincode is sent as a number if your schema expects it
-                }
-            }, { // <--- Headers object is the third argument
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json' // Explicitly set Content-Type for JSON body
-                }
-            });
-            // --- END FIX ---
+            const { data } = await axios.post(
+                '/api/user/add-address', {address}, { headers: { 'Authorization': `Bearer ${token}` }})
 
             if (data.success) {
-                toast.success(data.message);
-                router.push('/cart'); // Redirect on success
+                toast.success(data.message)
+                router.push('/cart')
             } else {
-                // This will now display the specific validation error message from the backend
-                toast.error(data.message);
+                toast.error(data.message)
             }
+
         } catch (error) {
-            console.error("Frontend Add Address Error:", error); // Log detailed error
-            // Improved error message extraction from Axios error response
-            toast.error(error.response?.data?.message || error.message || "An error occurred while adding address.");
+            toast.error(error.message)
         }
-    } // <--- ADDED THIS CLOSING CURLY BRACE FOR onSubmitHandler
+    }
 
     return (
         <>

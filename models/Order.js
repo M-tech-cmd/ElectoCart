@@ -1,32 +1,45 @@
+// models/Order.js
 import mongoose from "mongoose";
-
 
 const orderSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
-    required: true
+    type: String, // <<< CRITICAL: Must be String for Clerk user IDs. NO 'ref'.
+    required: true,
   },
-  items: [{
-    product: {
-      type: String,
-      ref: "Product",
-      required: true
+  items: [
+    {
+      product: {
+        type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
+        ref: "Product", // <<< This MUST match the model name in your Product.js (e.g., "Product")
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
     },
-    quantity: {
-      type: Number,
-      required: true,
-    }
-  }],
+  ],
   amount: {
     type: Number,
     required: true,
   },
-  address: { type: String, ref: "Address", required: true },
-  ammount: {type: Number, required: true},
-    status: { type: String, required: true, default: "Order Placed" },
-    date: { type: String, required: true }
-});
+  address: {
+    type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
+    ref: "Address", // <<< This MUST match the model name in your Address.js (e.g., "Address")
+    required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+    default: "Order Placed",
+  },
+  date: {
+    type: Date, // Recommended: Use Date type for dates, better for sorting/querying
+    required: true,
+    default: Date.now, // Automatically set creation date
+  },
+}, { timestamps: true });
 
-const Order = mongoose.models.order || mongoose.model("order", orderSchema);
+// CRITICAL: Prevents Mongoose from re-registering the model
+const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);
 export default Order;

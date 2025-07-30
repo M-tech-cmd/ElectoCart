@@ -3,7 +3,7 @@ import connectDB from "@/config/db";
 import { getAuth } from "@clerk/nextjs/server";
 import authSeller from "@/lib/authSeller";
 import { NextResponse } from "next/server";
-import Product from "@/models/product";
+import Product from "@/models/Product";
 
 //configuring cloudinary with environment variables
 cloudinary.config({

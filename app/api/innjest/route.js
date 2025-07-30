@@ -1,6 +1,6 @@
 import { serve } from "inngest/next";
 // Corrected import: change 'createUserOrder' to 'syncUserOrder'
-import { inngest, syncUserCreation, syncUserDeletion, syncUserUpdation, syncUserOrder } from "@/config/innjest";
+import { inngest, syncUserCreation, syncUserDeletion, syncUserUpdation, syncUserOrder, createUserOrder } from "@/config/innjest";
 
 // Create Api that serves zero functions (this comment is misleading, it actually serves functions)
 export const { GET, POST, PUT } = serve({
@@ -9,6 +9,6 @@ export const { GET, POST, PUT } = serve({
     syncUserCreation,
     syncUserUpdation,
     syncUserDeletion,
-    syncUserOrder // Corrected: use the actual function name 'syncUserOrder'
+    createUserOrder // Corrected: use the actual function name 'syncUserOrder'
   ],
 });

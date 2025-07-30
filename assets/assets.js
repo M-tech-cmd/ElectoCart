@@ -7,7 +7,7 @@ import order_icon from "./order_icon.svg";
 import instagram_icon from "./instagram_icon.svg";
 import facebook_icon from "./facebook_icon.svg";
 import twitter_icon from "./twitter_icon.svg";
-import box_icon from "./box_icon.svg";
+import box_icon from "./box_icon.png";
 import product_list_icon from "./product_list_icon.svg";
 import menu_icon from "./menu_icon.svg";
 import arrow_icon from "./arrow_icon.svg";
@@ -186,7 +186,7 @@ export const productsDummyData = [
     "image": [
       "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/hdfi4u3fmprazpnrnaga.webp"
     ],
-    "category": "Earphone",
+    "category": "Watch",
     "date": 1738667417511,
     "__v": 0
   },
@@ -238,7 +238,7 @@ export const productsDummyData = [
     "name": "Sony WF-1000XM5",
     "description": "Sony WF-1000XM5 true wireless earbuds deliver immersive sound with Hi-Res Audio and advanced noise cancellation technology. Designed for comfort and quality, they provide a stable, snug fit for a secure listening experience. Whether you're working out or traveling, these earbuds will keep you connected with the world around you while enjoying rich, clear sound.",
     "price": 32349.99,
-    "offerPrice": 299.99,
+    "offerPrice": 2349.99,
     "image": [
       "https://raw.githubusercontent.com/avinashdm/gs-images/main/quickcart/e3zjaupyumdkladmytke.webp"
     ],
