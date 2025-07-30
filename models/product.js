@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
   date: { type: Number, required: true }
 });
 
-// CRITICAL FIX: Model name MUST be "product" (lowercase p) to match the new file name and import paths
+// CRITICAL FIX: Model name MUST be "product" (lowercase p)
 const Product = mongoose.models.product || mongoose.model("product", productSchema)
 
 export default Product;
