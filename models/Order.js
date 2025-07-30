@@ -41,5 +41,5 @@ const orderSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // CRITICAL: Prevents Mongoose from re-registering the model
-const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);
+const Order = mongoose.models.order || mongoose.model("order", orderSchema);
 export default Order;
