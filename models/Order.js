@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema({
   },
   address: {
     type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
-    ref: "address", // <<< This MUST match the model name in your Address.js (e.g., "Address")
+    ref: "Address", // <<< This MUST match the model name in your Address.js (e.g., "Address")
     required: true,
   },
   status: {
@@ -41,5 +41,5 @@ const orderSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // CRITICAL: Prevents Mongoose from re-registering the model
-const Order = mongoose.models.order || mongoose.model("order", orderSchema);
+const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);
 export default Order;

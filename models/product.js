@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
@@ -9,10 +8,10 @@ const productSchema = new mongoose.Schema({
   offerPrice: { type: Number, required: true },
   category: { type: String, required: true },
   image: { type: Array, required: true },
-  date: { type: Number, required: true }
+  date: { type: Number, required: true } // Consistent with how you store it in product/add
 });
 
-// CRITICAL FIX: Model name MUST be "product" (lowercase p)
-const Product = mongoose.models.product || mongoose.model("product", productSchema)
+// CRITICAL: Model name MUST be "Product" (capital P) to match 'ref: "Product"' in Order.js
+const Product = mongoose.models.Product || mongoose.model("Product", productSchema)
 
 export default Product;
