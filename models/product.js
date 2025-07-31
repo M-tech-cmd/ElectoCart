@@ -12,6 +12,6 @@ const productSchema = new mongoose.Schema({
 });
 
 // CRITICAL: Model name MUST be "Product" (capital P) to match 'ref: "Product"' in Order.js
-const Product = mongoose.models.Product || mongoose.model("Product", productSchema)
+const Product = mongoose.models.product || mongoose.model("product", productSchema)
 
 export default Product;
