@@ -10,7 +10,7 @@ const orderSchema = new mongoose.Schema({
     {
       product: {
         type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
-        ref: "product", // <<< This MUST match the model name in your Product.js (e.g., "Product")
+        ref: "Product", // <<< This MUST match the model name in your Product.js (e.g., "Product")
         required: true,
       },
       quantity: {
