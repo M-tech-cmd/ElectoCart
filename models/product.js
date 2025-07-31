@@ -1,17 +1,18 @@
+// models/product.js (Renamed file to lowercase 'p')
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  userId: { type: String, required: true, ref: "User" }, // Fixed: Should ref "User" if you have a User model
+  userId: { type: String, required: true, ref: "user" },
   name: { type: String, required: true },
   price: { type: Number, required: true },
   description: { type: String, required: true },
   offerPrice: { type: Number, required: true },
   category: { type: String, required: true },
   image: { type: Array, required: true },
-  date: { type: Date, required: true, default: Date.now } // Fixed: Use Date type instead of Number
-}, { timestamps: true }); // Added timestamps for better tracking
+  date: { type: Number, required: true }
+});
 
-// CRITICAL FIX: Model name MUST be "Product" (capital P) to match ref in Order.js
-const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
+// CRITICAL FIX: Model name MUST be "product" (lowercase p)
+const Product = mongoose.models.product || mongoose.model("product", productSchema)
 
 export default Product;

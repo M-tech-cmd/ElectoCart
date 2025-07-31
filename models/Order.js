@@ -1,52 +1,45 @@
+// models/Order.js
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
   userId: {
-    type: String, // Perfect for Clerk user IDs
+    type: String, // <<< CRITICAL: Must be String for Clerk user IDs. NO 'ref'.
     required: true,
-    index: true, // Added index for faster queries
   },
   items: [
     {
       product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product", // This now matches the fixed Product model name
+        type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
+        ref: "product", // <<< This MUST match the model name in your Product.js (e.g., "Product")
         required: true,
       },
       quantity: {
         type: Number,
         required: true,
-        min: 1, // Added validation
       },
     },
   ],
   amount: {
     type: Number,
     required: true,
-    min: 0, // Added validation
   },
   address: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Address", // This matches your Address model
+    type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
+    ref: "Address", // <<< This MUST match the model name in your Address.js (e.g., "Address")
     required: true,
   },
   status: {
     type: String,
     required: true,
     default: "Order Placed",
-    enum: ["Order Placed", "Processing", "Shipped", "Delivered", "Cancelled"], // Added enum for valid statuses
   },
   date: {
-    type: Date,
+    type: Date, // Recommended: Use Date type for dates, better for sorting/querying
     required: true,
-    default: Date.now,
+    default: Date.now, // Automatically set creation date
   },
-}, { 
-  timestamps: true // Adds createdAt and updatedAt automatically
-});
+}, { timestamps: true });
 
-// Added compound index for efficient querying
-orderSchema.index({ userId: 1, date: -1 });
-
-const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);
+// CRITICAL: Prevents Mongoose from re-registering the model
+const Order = mongoose.models.order || mongoose.model("order", orderSchema);
 export default Order;

@@ -1,71 +1,16 @@
+// models/Address.js
 import mongoose from "mongoose";
 
 const addressSchema = new mongoose.Schema({
-    userId: { 
-        type: String, 
-        required: true,
-        index: true // Added index for faster user-specific queries
-    },
-    fullName: { 
-        type: String, 
-        required: true,
-        trim: true // Removes whitespace
-    },
-    phoneNumber: { 
-        type: String, 
-        required: true,
-        validate: {
-            validator: function(v) {
-                return /\d{10}/.test(v); // Basic phone validation
-            },
-            message: props => `${props.value} is not a valid phone number!`
-        }
-    },
-    pincode: { 
-        type: String, // Changed to String - postal codes can have letters/leading zeros
-        required: true,
-        trim: true
-    },
-    area: { 
-        type: String, 
-        required: true,
-        trim: true
-    },
-    city: { 
-        type: String, 
-        required: true,
-        trim: true
-    },
-    state: { 
-        type: String, 
-        required: true,
-        trim: true
-    },
-    // Optional: Add country field for international support
-    country: {
-        type: String,
-        default: "India", // Adjust based on your target market
-        trim: true
-    },
-    // Optional: Mark default address
-    isDefault: {
-        type: Boolean,
-        default: false
-    }
-}, { 
-    timestamps: true 
-});
+    userId: { type: String, required: true }, // Assuming Clerk userId
+    fullName: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    pincode: { type: Number, required: true }, // Or zipCode if that's what you intend
+    area: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+}, { timestamps: true });
 
-// Ensure only one default address per user
-addressSchema.pre('save', async function(next) {
-    if (this.isDefault) {
-        await mongoose.model('Address').updateMany(
-            { userId: this.userId, _id: { $ne: this._id } },
-            { isDefault: false }
-        );
-    }
-    next();
-});
-
-const Address = mongoose.models.Address || mongoose.model("Address", addressSchema);
+// CRITICAL: Prevents Mongoose from re-registering the model
+const Address = mongoose.models.address || mongoose.model("address", addressSchema);
 export default Address;
