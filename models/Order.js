@@ -1,45 +1,52 @@
-// models/Order.js
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
   userId: {
-    type: String, // <<< CRITICAL: Must be String for Clerk user IDs. NO 'ref'.
+    type: String, // Perfect for Clerk user IDs
     required: true,
+    index: true, // Added index for faster queries
   },
   items: [
     {
       product: {
-        type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
-        ref: "Product", // <<< This MUST match the model name in your Product.js (e.g., "Product")
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product", // This now matches the fixed Product model name
         required: true,
       },
       quantity: {
         type: Number,
         required: true,
+        min: 1, // Added validation
       },
     },
   ],
   amount: {
     type: Number,
     required: true,
+    min: 0, // Added validation
   },
   address: {
-    type: mongoose.Schema.Types.ObjectId, // <<< CRITICAL: MUST be ObjectId for population
-    ref: "Address", // <<< This MUST match the model name in your Address.js (e.g., "Address")
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Address", // This matches your Address model
     required: true,
   },
   status: {
     type: String,
     required: true,
     default: "Order Placed",
+    enum: ["Order Placed", "Processing", "Shipped", "Delivered", "Cancelled"], // Added enum for valid statuses
   },
   date: {
-    type: Date, // Recommended: Use Date type for dates, better for sorting/querying
+    type: Date,
     required: true,
-    default: Date.now, // Automatically set creation date
+    default: Date.now,
   },
-}, { timestamps: true });
+}, { 
+  timestamps: true // Adds createdAt and updatedAt automatically
+});
 
-// CRITICAL: Prevents Mongoose from re-registering the model
+// Added compound index for efficient querying
+orderSchema.index({ userId: 1, date: -1 });
+
 const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);
 export default Order;
