@@ -12,5 +12,5 @@ const addressSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // CRITICAL: Prevents Mongoose from re-registering the model
-const Address = mongoose.models.address || mongoose.model("address", addressSchema);
+const Address = mongoose.models.Address || mongoose.model("Address", addressSchema);
 export default Address;
