@@ -14,7 +14,7 @@ export const useAppContext = () => {
 
 export const AppContextProvider = (props) => {
 
-    const [currency, setCurrency] = useState('Ksh');
+    const [currency, setCurrency] = useState('kes');
     const router = useRouter()
 
     const { user } = useUser();

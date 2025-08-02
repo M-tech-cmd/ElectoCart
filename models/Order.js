@@ -37,6 +37,18 @@ const orderSchema = new mongoose.Schema({
     required: true,
     default: Date.now,
   },
+  // --- NEW FIELDS ADDED ---
+  paymentType: {
+    type: String,
+    required: true,
+    default: "Stripe" // Default to Cash On Delivery. Will be 'Stripe' for online payments.
+  },
+  isPaid: {
+    type: Boolean,
+    required: true,
+    default: false // Default to false. Will be updated to true by Stripe webhook.
+  }
+  // --- END NEW FIELDS ---
 }, { timestamps: true });
 
 // CRITICAL FIX: Standardized model name to 'Order' (capital O)

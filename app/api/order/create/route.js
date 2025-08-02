@@ -1,3 +1,4 @@
+
 import connectDB from "@/config/db"; // Assuming you have this for DB connection
 import Product from "@/models/Product"; // Ensure this path and casing is correct (Capital P)
 import Order from "@/models/Order";     // CRITICAL: Import the Order model

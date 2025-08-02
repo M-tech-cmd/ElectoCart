@@ -61,7 +61,7 @@ const MyOrders = () => {
                     ) : (
                         <div className="max-w-5xl border-t border-gray-300 text-sm">
                             {orders.length === 0 ? (
-                                <p className="text-center py-10 text-gray-500">No orders found.</p>
+                                <p className="text-center py-10 text-gray-500"></p>
                             ) : (
                                 orders.map((order, index) => (
                                     <div key={index} className="flex flex-col md:flex-row gap-5 justify-between p-5 border-b border-gray-300">
@@ -99,7 +99,7 @@ const MyOrders = () => {
                                         <p className="font-medium my-auto">{currency}{order.amount}</p>
                                         <div>
                                             <p className="flex flex-col">
-                                                <span>Method : COD</span>
+                                                 <span>Method: COD</span>
                                                 <span>Date : {new Date(order.date).toLocaleDateString()}</span>
                                                 <span>Payment : Pending</span>
                                             </p>
