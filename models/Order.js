@@ -41,7 +41,7 @@ const orderSchema = new mongoose.Schema({
   paymentType: {
     type: String,
     required: true,
-    default: "Stripe" // Default to Cash On Delivery. Will be 'Stripe' for online payments.
+    default: "COD" // Default to Cash On Delivery. Will be 'Stripe' for online payments.
   },
   isPaid: {
     type: Boolean,

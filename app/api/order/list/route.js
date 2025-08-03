@@ -28,7 +28,7 @@ export async function GET(request) {
         // Fetch orders for the logged-in user (userId)
         // CRITICAL: Populate 'items.product' to get full product details
         // CRITICAL: Populate 'address' to get full address details
-        const orders = await Order.find({ userId })
+        const orders = await Order.find({ userId, $or: [{ paymentType: "COD"}, { paymentType: "Stripe", isPaid: true }] })
                                 .populate({
                                     path: 'items.product', // Path to the product field within the items array
                                     model: 'Product'       // The Mongoose model name for Product (MUST match models/Product.js)
