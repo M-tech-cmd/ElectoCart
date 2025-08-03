@@ -1,4 +1,4 @@
-// manage stripe webhooks
+
 import Stripe from "stripe"
 import connectDB from "@/config/db";
 import User from "@/models/User";
