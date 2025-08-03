@@ -1,0 +1,65 @@
+[33m5ca4292[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Removed .env file from Git tracking
+[33md3f8054[m Stripe Webhooks Added
+[33m9c7b3fa[m Add .env to .gitignore
+[33m822c8e1[m Stripe Webhooks Added
+[33m0782dcd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix: Comprehensive fixes for order creation, display, and casing issues
+[33m1525fca[m Standardized Product model file and all references to CAPITAL P
+[33ma34c7c8[m Update
+[33m0672e71[m update
+[33mc8e009e[m Update
+[33mc5430d3[m Full local reset and re-verification of all casing/schema fixes
+[33mf43bea7[m Update
+[33m9ee308d[m Update
+[33me91dc7e[m Trigger Vercel rebuild for latest fixes
+[33mb5bd14e[m Update
+[33m6a40e7d[m Update
+[33mbf13988[m Update
+[33m2e6cbda[m Fix: Standardize Product model casing and update all imports/schemas
+[33mc159a06[m Update
+[33m877fb47[m Update
+[33mbcea02c[m Finished Project
+[33me5ecfb6[m Merge branch 'main' of https://github.com/M-tech-cmd/ElectoCart
+[33m2218575[m Finished Project
+[33m70b859a[m Create FUNDING.yml
+[33me304abb[m Update
+[33m175ab5a[m Update
+[33m06fc9f2[m Save
+[33m792e945[m Save
+[33mc033d24[m Save
+[33mee6768e[m Updated
+[33m57fdc4b[m Update
+[33md657029[m Update
+[33mab46bfd[m Update
+[33m96391a3[m Updated
+[33m811fc90[m Fix: Corrected User.js casing in Git index
+[33me876e03[m Update
+[33mf610449[m Update
+[33m787a555[m Update
+[33m6c95868[m Update
+[33mef08627[m Update
+[33m85050f0[m Update
+[33m3c3b2a1[m Update
+[33m1a66aea[m Update
+[33m5d79adc[m Update
+[33mf24f182[m Update
+[33m958a81f[m Update
+[33mf9010b7[m Update
+[33m147b574[m Update
+[33mbb07467[m Update
+[33m66b5e8d[m Update
+[33m17fee56[m Update
+[33m5e3f501[m Update
+[33me886076[m Update
+[33mf699a84[m Update
+[33m7ebcb78[m Updated
+[33ma1f6eb7[m Update
+[33m8530893[m Updated
+[33m08925dc[m Updated
+[33mce37205[m updated
+[33m692e98a[m First Commit
+[33m0abe4f6[m First Commit
+[33m15d66d1[m First Commit
+[33mc163f72[m Update route.js
+[33m6d81707[m Update README.md
+[33mee3c6ba[m First Commit
+[33m5c784d7[m Initial commit
